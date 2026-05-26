@@ -1,0 +1,21 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    usbutils \
+    python3 python3-pip python3-dev \
+    libusb-1.0-0 \
+    ca-certificates \
+    python3-grpcio python3-grpc-tools \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+RUN python3 -m pip install --upgrade pip setuptools wheel
+RUN python3 -m pip install --no-cache-dir numpy pyusb
+RUN python3 -m pip install --no-cache-dir bosdyn-api bosdyn-core
+RUN python3 -m pip install --no-cache-dir deprecated requests pyjwt pynacl protobuf
+RUN python3 -m pip install --no-cache-dir --no-deps bosdyn-client
+
+COPY src/ /app/
+
+CMD ["python3", "/app/robot_command_mission_service.py"]

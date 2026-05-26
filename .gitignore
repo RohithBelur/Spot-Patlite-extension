@@ -1,0 +1,8 @@
+Extension/*.spx
+Extension/*.tgz
+*.pdf
+*.txt
+*.spx
+*.tgz
+.codex
+__pycache__/

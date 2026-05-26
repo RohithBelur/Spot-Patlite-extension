@@ -1,0 +1,9 @@
+{
+  "description": "Patlite LR6-USB Spot RemoteMissionService extension",
+  "version": "1.0.0",
+  "extension_name": "patlite_lr6",
+  "udev_rules": "99-patlite-usb.rules",
+  "images": [
+    "patlite_lr6.tgz"
+  ]
+}

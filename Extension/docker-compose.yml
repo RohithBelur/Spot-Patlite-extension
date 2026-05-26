@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  patlite_lr6:
+    image: patlite_lr6:1.0
+    restart: unless-stopped
+    network_mode: host
+
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb"
+
+    environment:
+      SPOT_HOSTNAME: "192.168.50.3"
+      SPOT_USERNAME: "user"
+      SPOT_PASSWORD: "jwxecfunvw53"
+
+    command: ["python3", "/app/robot_command_mission_service.py", "--host-ip", "192.168.50.5", "--port", "21222", "192.168.50.3"]
